@@ -1,26 +1,22 @@
 {% set name = "intervals" %}
-{% set version = "0.8.1" %}
-{% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash = "37921da1407a5e9384e8e1350cfb8500f8d0d69fc43d03d01a4fdc6e7a7c7166" %}
-{% set build = 1 %}
+{% set version = "0.9.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 055bd20378e2728e2e1752dfc4c05d1647814c22cab390a3aaa3cd29bcd61138
 
 build:
   noarch: python
-  number: {{ build }}
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
+  host:
+    - pip
     - python >=3.6
     - setuptools
 
@@ -31,6 +27,10 @@ requirements:
 test:
   imports:
     - intervals
+  commands:
+    - pip check
+  requires: 
+    - pip
 
 about:
   home: https://github.com/kvesteri/intervals
