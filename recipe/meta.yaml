@@ -1,5 +1,5 @@
 {% set name = "intervals" %}
-{% set version = "0.9.1" %}
+{% set version = "0.9.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 055bd20378e2728e2e1752dfc4c05d1647814c22cab390a3aaa3cd29bcd61138
+  sha256: c7ee568c583ca857c0d91af6d90ee5e0e8adef3f5646d0076bfb87305ae43090
 
 build:
   noarch: python
@@ -29,7 +29,7 @@ test:
     - intervals
   commands:
     - pip check
-  requires: 
+  requires:
     - pip
 
 about:
@@ -37,7 +37,7 @@ about:
   license_file: LICENSE
   license: BSD-3-Clause
   license_family: BSD
-  summary: 'Python tools for handling intervals (ranges of comparable objects).'
+  summary: Python tools for handling intervals (ranges of comparable objects).
   dev_url: https://github.com/kvesteri/intervals
   doc_url: https://github.com/kvesteri/intervals
 
